@@ -27,6 +27,12 @@ abstract class _LoginStore with Store {
   @action
   void setPassword(String value) => password = value;
 
+   @observable
+  bool showPassword = false;
+
+  @action
+  void toggleShowPassword() => showPassword = !showPassword; 
+
   @computed
   bool get isEmailValid => 
     RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
@@ -36,5 +42,5 @@ abstract class _LoginStore with Store {
   bool get isPasswordValid => password.length > 6;
 
   @computed
-  bool get isFormValid => isEmailValid && isPasswordValid; 
+  bool get isFormValid => isEmailValid && isPasswordValid;
 }
