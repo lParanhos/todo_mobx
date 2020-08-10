@@ -35,6 +35,9 @@ abstract class _LoginStore with Store {
   @observable 
   bool loading = false;
 
+  @observable
+  bool loggedIn = false;
+
   @computed
   bool get isEmailValid => 
     RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
@@ -55,5 +58,6 @@ abstract class _LoginStore with Store {
     await Future.delayed(Duration(seconds: 2));
 
     loading = false;
+    loggedIn = true;
   }
 }
